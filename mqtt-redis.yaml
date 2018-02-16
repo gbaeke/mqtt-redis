@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mqtt-redis
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mqtt-redis
+    spec:
+      containers:
+       - name: mqtt-redis
+         image: gbaeke/mqtt-redis
+         env:
+          - name: MQTT_USER
+            value: "admin"
+          - name: MQTT_PASS
+            value: "test"
+          - name: MQTT_TOPIC
+            value: "airq/#"
